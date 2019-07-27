@@ -1,5 +1,6 @@
 // ****************************************
 // A simple wheel for a robot
+// Filename: Wheel.scad
 // by Dave Flynn
 // Created: 7/26/2019
 // Revision: 0.9.0 7/26/2019
@@ -14,7 +15,7 @@
 // BearingSpacer();
 // ****************************************
 //  ***** for Viewing *****
- ShowWheel();
+// ShowWheel();
 // ****************************************
 //  ***** Routines *****
 // GearSpacing()
