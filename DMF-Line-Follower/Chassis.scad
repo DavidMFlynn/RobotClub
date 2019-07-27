@@ -28,7 +28,9 @@ kMotor5202Nose_d=32;
 kMotor5202Nose_l=33;
 
 kMotor_a=38;
+kBaseMin=44; // Axil to floor distance
 kChassis_W=130;
+kChassis_L=90;
 	kShaftFlange_t=kBoltInset*4;
 	kShaftFlange_d=Bearing_ID+kBoltInset*4;
 MotorPlate_t=kBoltInset*2;
@@ -80,12 +82,58 @@ module AxilClamp(){
 } // AxilClamp
 
 //translate([-kChassis_W/2,0,0]) AxilClamp();
+nBBolts=4;
 
-module ChassisSide(Length=90){
-	Plate_t=5;
-	nBBolts=4;
+module ChassisFloor(Width=kChassis_W,Length=kChassis_L){
+	kFloor_t=3;
+	CenterZone_W=Width-kBoltInset*4;
+	CenterZone_L=Length-kBoltInset*4;
+	LH_d=10;
+	nWLH=CenterZone_W/(LH_d+5);
+	nLLH=CenterZone_L/(LH_d+5);
 	
-	kBaseMin=44;
+	difference(){
+		union(){
+			translate([-Width/2,-Length/2,0]) cube([Width,Length,kFloor_t]);
+			
+			// front & back
+			//translate([-Width/2,-Length/2, kMotor5202_d/2+kFloor_t]) rotate([0,90,0])
+				//cylinder(r=kMotor5202_d/2+kFloor_t, h=Width);
+		} // union
+		
+		// Side mounting bolts
+		for (j=[0:nBBolts-1]){
+			translate([-Width/2+kBoltInset,-Length/2+kBoltInset+(Length-kBoltInset*2)/(nBBolts-1)*j,kFloor_t])
+				Bolt4ClearHole();
+			translate([Width/2-kBoltInset,-Length/2+kBoltInset+(Length-kBoltInset*2)/(nBBolts-1)*j,kFloor_t])
+				Bolt4ClearHole();
+		}
+		
+		// Lightening holes
+		for (k=[0:nLLH-1])
+			for (j=[0:nWLH-1])
+				translate([-CenterZone_W/2+CenterZone_W/nWLH*j+CenterZone_W/nWLH-LH_d/2,
+					-CenterZone_L/2+CenterZone_L/nLLH*k+CenterZone_L/nLLH,-Overlap])
+					cylinder(d=LH_d,h=kFloor_t+Overlap*2);
+			
+		translate([0,0,kBaseMin+kFloor_t]) rotate([-kMotor_a,0,0]) 
+		translate([-Width/2+kBoltInset*2,GearSpacing(),0]) rotate([0,90,0]) cylinder(d=kMotor5202_d+1,h=CenterZone_W);
+			
+		translate([0,0,kBaseMin+kFloor_t]) rotate([180+kMotor_a,0,0]) 
+		translate([-Width/2+kBoltInset*2,GearSpacing(),0]) rotate([0,90,0]) cylinder(d=kMotor5202_d+1,h=CenterZone_W);
+
+			
+	} // diff
+} // ChassisFloor
+
+ChassisFloor();
+
+
+module ChassisSide(Length=kChassis_L){
+	Plate_t=5;
+	
+	
+	
 	
 	difference(){
 		union(){
