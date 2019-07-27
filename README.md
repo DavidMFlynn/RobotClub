@@ -8,3 +8,8 @@ OpenSCAD Libraries folder has some useful 3D printing libraries.  Put them in Op
 Web sites:
 https://www.robotshop.com
 https://www.servocity.com
+https://www.dfrobot.com
+https://www.seeedstudio.com
+https://www.adafruit.com
+https://www.sparkfun.com
+
