@@ -28,6 +28,7 @@ $fn=90;
 Overlap=0.05;
 IDXtra=0.2;
 
+	kGear_w=5;
 	Wall_t=1.2;
 	Bearing_OD=1.125*25.4;
 	Bearing_ID=12.7;
@@ -43,8 +44,8 @@ IDXtra=0.2;
 module ShowWheel(){
 	color("Tan") Wheel(OD=120,Tire_w=15);
 	translate([0,0,Bearing_h*3+Wall_t*3]) rotate([180,0,180]) color("LightBlue") WheelGear();
-	translate([GearSpacing(),0,Bearing_h*3-Wall_t]) 
-		rotate([0,0,180/mGearTeeth]) MotorGear();
+	translate([GearSpacing(),0,Bearing_h*3-Wall_t+kGear_w]) 
+		rotate([0,0,180/mGearTeeth]) rotate([180,0,0]) MotorGear();
 	translate([0,0,Wall_t*2+Bearing_h]) color("Green") BearingSpacer();
 } // ShowWheel
 
@@ -148,8 +149,8 @@ module MotorGear(){
 		circular_pitch=GearPitch, diametral_pitch=false,
 		pressure_angle=20,
 		clearance = 0.2,
-		gear_thickness=5,
-		rim_thickness=5,
+		gear_thickness=kGear_w,
+		rim_thickness=kGear_w,
 		rim_width=3,
 		hub_thickness=12,
 		hub_diameter=12,
@@ -176,10 +177,10 @@ module WheelGear(){
 		circular_pitch=GearPitch, diametral_pitch=false,
 		pressure_angle=20,
 		clearance = 0.2,
-		gear_thickness=5+Wall_t,
-		rim_thickness=5,
+		gear_thickness=kGear_w+Wall_t,
+		rim_thickness=kGear_w,
 		rim_width=3,
-		hub_thickness=5,
+		hub_thickness=kGear_w,
 		hub_diameter=Bearing_OD+Wall_t*4,
 		bore_diameter=Bearing_OD+Wall_t*2+IDXtra,
 		circles=nBolts,
