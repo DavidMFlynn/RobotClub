@@ -5,6 +5,14 @@
 // Created: 7/26/2019
 // Revision: 0.9.0 7/26/2019
 // ****************************************
+//  ***** Notes *****
+//
+//  Gear ratio 12t to 36t, 3:1
+//  Yellow Jacket "5.2:1" (5.18181818:1) (5-2/11:1)
+//  * 28 counts/rev = 145.09090909 (145-1/11) counts / rev of the output shaft
+//  * 3:1 = 435.27272727 (435-3/11) counts / rotation of the wheel
+//  * 11:1 = 1596 counts / rotation of the wheel
+//
 //  ***** History ******
 // 0.9.0 7/26/2019 First code
 // ****************************************

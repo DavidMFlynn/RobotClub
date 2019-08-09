@@ -3,6 +3,8 @@
 
 Each member should create their own directory and keep custom code and things in it.
 
+Next meeting: Tuesday 6/13/2019 6PM Denny's 1060 Huntington Dr
+
 OpenSCAD Libraries folder has some useful 3D printing libraries.  Put them in OpenSCAD's library folder.
 
 Web sites:
