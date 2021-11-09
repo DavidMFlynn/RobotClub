@@ -18,7 +18,7 @@ https://www.adafruit.com               Hobby electronics
 https://www.sparkfun.com               Hobby electronics
 http://www.digikey.com                 Electronics
 https://www.newark.com                 Electronics, Raspberry Pi
-http://kicad-pcb.org                   PCB design software
+http://kicad.org                       PCB design software
 https://www.openscad.org               Open-source CAD for 3D printing and Laser cutting
 
 https://luckyutensils.com              mBot $53
